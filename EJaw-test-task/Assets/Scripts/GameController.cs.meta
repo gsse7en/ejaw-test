@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: afcd84ecac4b14adf83798b61845995b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - nonVRCamera: {instanceID: 0}
+  - jsonData: {fileID: 4900000, guid: c03f08371916041e4ad1e9604f246ece, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
