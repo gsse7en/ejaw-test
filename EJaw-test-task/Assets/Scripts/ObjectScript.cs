@@ -16,22 +16,19 @@ public class ObjectScript:MonoBehaviour
         Observable
             .Timer (System.TimeSpan.FromSeconds (5)) 
             .Repeat()
-            .Subscribe (_ => { 
-                this.gameObject.GetComponent<Renderer>().material = objectTypes.getRandMaterial();
-            }).AddTo (disposables); 
-        Observable
-            .EveryUpdate()
-            .Where(_ => Input.GetMouseButtonDown(0))
-            .Subscribe(_ => { 
-                if (clickCounter == 5) {
-                    clickCounter = 0;
-                    this.gameObject.GetComponent<Renderer>().material = objectTypes.getRandMaterial();
-                }
-            }).AddTo (disposables); 
+            .Subscribe (_ => ChangeColor()).AddTo (disposables); 
     }
 
-    public void Clicked () { 
-        clickCounter += 1;
+    public void Clicked () 
+    { 
+        if (++clickCounter == 5) {
+            clickCounter = 0;
+            this.gameObject.GetComponent<Renderer>().material = objectTypes.getRandMaterial();
+        }
+    }
+    void ChangeColor() 
+    {
+this.gameObject.GetComponent<Renderer>().material = objectTypes.getRandMaterial();
     }
     void OnEnable () { 
         disposables = new CompositeDisposable();
