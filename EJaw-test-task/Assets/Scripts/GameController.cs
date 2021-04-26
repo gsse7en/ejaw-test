@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        // change to unirx~!~
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
