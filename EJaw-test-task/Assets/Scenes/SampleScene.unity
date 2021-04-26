@@ -384,18 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afcd84ecac4b14adf83798b61845995b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nonVRCamera: {fileID: 534669904}
-  prefabs:
-  - {fileID: 3735484060499255886, guid: 59924c9b402674041806492b6f673b0c, type: 3}
-  - {fileID: 4457188089603119537, guid: 2be7da049fda6468f9b4ab0a876bf7f8, type: 3}
-  - {fileID: 2744161197979983291, guid: 3d989c46e5b6a46768401a03b1d16708, type: 3}
-  - {fileID: 863082699055126441, guid: fb0b094a9a8064dda84208477b8d3027, type: 3}
-  materials:
-  - {fileID: 2100000, guid: b15c6fcca4a114b33a338b541bc90915, type: 2}
-  - {fileID: 2100000, guid: ce765113a0a3747f29a1f7a8354829af, type: 2}
-  - {fileID: 2100000, guid: 716f5e17703d94773bb03e548bff7b45, type: 2}
-  - {fileID: 2100000, guid: d84fade1663ab4be8bfb81fe73208f79, type: 2}
-  jsonData: {fileID: 4900000, guid: c03f08371916041e4ad1e9604f246ece, type: 3}
+  mainCamera: {fileID: 534669904}
 --- !u!4 &1473866857
 Transform:
   m_ObjectHideFlags: 0

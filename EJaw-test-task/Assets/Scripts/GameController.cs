@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour
             jsonData = dr.ReadToEnd();
         }
         objectTypes = JsonUtility.FromJson<DataResponse>(jsonData);
+        DataStorage.Instance.objectTypes = objectTypes;
     }
 
     void Update()
@@ -29,8 +30,13 @@ public class GameController : MonoBehaviour
             {
                 if (hit.transform.tag == "Floor")
                 {
-                    GameObject pref = Instantiate(Resources.Load("Prefabs/"+objectTypes.prefabs[Random.Range(0, objectTypes.prefabs.Length)], typeof(GameObject)) as GameObject, hit.point, Quaternion.identity);
-                    pref.GetComponent<Renderer>().material = Resources.Load("Materials/"+objectTypes.materials[Random.Range(0, objectTypes.materials.Length)], typeof(Material)) as Material;
+                    GameObject pref = Instantiate(objectTypes.getRandPrefab(), hit.point, Quaternion.identity);
+                    pref.GetComponent<Renderer>().material = objectTypes.getRandMaterial();
+                    pref.AddComponent<ObjectScript>();
+                }
+                if (hit.transform.tag == "Element")
+                {
+                    hit.collider.GetComponent<ObjectScript>().Clicked();
                 }
             }
         }
