@@ -15,7 +15,6 @@ public class GameData : ScriptableObject
             return observableTime;
         }
     }
- 
     public static GameData GetInstance()
     {
         if (!s_Instance)

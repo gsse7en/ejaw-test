@@ -9,7 +9,6 @@ public class GameController : MonoBehaviour
     public Camera mainCamera;
     private CompositeDisposable disposables;
     private DataResponse prefabNames;
-    private DataResponse objectTypes;
 
     void Start()
     {
