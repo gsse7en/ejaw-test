@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
-using UniRx.Triggers;
 using System.IO;
 
 public class ObjectScript:MonoBehaviour
 {
-    public CompositeDisposable disposables;
+    private CompositeDisposable disposables;
     private ClickColorData clickColorData;
     private int clickCounter = 0;
 
@@ -16,7 +15,7 @@ public class ObjectScript:MonoBehaviour
         GetClicksData();
     }
 
-    public void SubscribeToTimeChange() 
+    void SubscribeToTimeChange() 
     {
         GameData gameData = GameData.GetInstance();
         Observable
@@ -26,7 +25,7 @@ public class ObjectScript:MonoBehaviour
             .AddTo (disposables); 
     }
 
-    public void GetClicksData()
+    void GetClicksData()
     {
         GeometryObjectData geometryObjectData = GeometryObjectData.GetInstance();
         foreach(ClickColorData clicksData in geometryObjectData.ClicksData)
@@ -37,17 +36,17 @@ public class ObjectScript:MonoBehaviour
             }
         }
     }
-    public void ChangeColor () 
+    public void ChangeColor() 
     { 
         Color randomColor = new Color( Random.value, Random.value, Random.value, 1.0f );
         this.gameObject.GetComponent<Renderer>().material.color = randomColor;
     }
-    public void SetColor (Color color) 
+    void SetColor(Color color) 
     { 
         this.gameObject.GetComponent<Renderer>().material.color = color;
     }
 
-    public bool IsBetween(int testValue, int min, int max)
+    bool IsBetween(int testValue, int min, int max)
     {
         return (testValue >= min && testValue <= max);
     }
