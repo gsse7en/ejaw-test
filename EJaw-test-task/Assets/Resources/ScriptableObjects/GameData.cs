@@ -5,8 +5,16 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     [SerializeField]
-    public int observableTime;
+    private int observableTime;
     private static GameData s_Instance = null;
+
+    public int ObservableTime
+    {
+        get
+        {
+            return observableTime;
+        }
+    }
  
     public static GameData GetInstance()
     {

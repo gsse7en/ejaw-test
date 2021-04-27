@@ -17,3 +17,15 @@ MonoBehaviour:
     MinClicksCount: 4
     MaxClicksCount: 10
     Color: {r: 0.3665346, g: 0.2494215, b: 0.5566038, a: 0}
+  - ObjectType: Cylinder
+    MinClicksCount: 2
+    MaxClicksCount: 5
+    Color: {r: 0.5568628, g: 0.2572268, b: 0.2509804, a: 0}
+  - ObjectType: Capsule
+    MinClicksCount: 1
+    MaxClicksCount: 3
+    Color: {r: 0.11039313, g: 1, b: 0.0047169924, a: 0}
+  - ObjectType: Sphere
+    MinClicksCount: 5
+    MaxClicksCount: 7
+    Color: {r: 0.8301887, g: 0.1527234, b: 0.76102895, a: 0}
