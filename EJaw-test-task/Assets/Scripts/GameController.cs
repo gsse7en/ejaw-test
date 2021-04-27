@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour
     }
     void SubscribeToClick()
     {
-        Observable.EveryUpdate()
+        Observable
             .Where(_ => Input.GetMouseButtonDown(0))
             .Subscribe(_ => CheckHit())
             .AddTo (disposables);

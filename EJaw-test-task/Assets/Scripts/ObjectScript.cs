@@ -11,13 +11,14 @@ public class ObjectScript:MonoBehaviour
     private int clickCounter = 0;
 
     void Start () {
-        SubscribeToTimeChange();
         GetClicksData();
+        SubscribeToTimeChange();
     }
 
     void SubscribeToTimeChange() 
     {
         GameData gameData = GameData.GetInstance();
+        if (!gameData) return;
         Observable
             .Timer (System.TimeSpan.FromSeconds (gameData.ObservableTime)) 
             .Repeat()
@@ -28,6 +29,7 @@ public class ObjectScript:MonoBehaviour
     void GetClicksData()
     {
         GeometryObjectData geometryObjectData = GeometryObjectData.GetInstance();
+        if (!geometryObjectData) return;
         foreach(ClickColorData clicksData in geometryObjectData.ClicksData)
         {
             if (this.gameObject.name.Contains(clicksData.ObjectType))
