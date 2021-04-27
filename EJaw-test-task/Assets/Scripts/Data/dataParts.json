@@ -1,4 +1,0 @@
-﻿{
-	"prefabs": ["Cube", "Sphere", "Capsule", "Cylinder"],
-	"materials": ["Orange", "Violet", "Red", "Green"]
-}

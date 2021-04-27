@@ -385,6 +385,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 534669904}
+  prefabNames:
+    prefabs: []
 --- !u!4 &1473866857
 Transform:
   m_ObjectHideFlags: 0

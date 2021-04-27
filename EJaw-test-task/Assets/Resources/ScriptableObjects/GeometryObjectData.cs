@@ -3,25 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using System;
+[CreateAssetMenu(fileName = "GeometryObjectData", menuName = "Geometry Object Data", order = 25)]
 public class GeometryObjectData : ScriptableObject
 {
     [SerializeField]
-    public List<ClickColorData> ClicksData;
-    void Start()
-    {
-        string jsonData;
-        try
-        {
-            using (StreamReader dr = new StreamReader("Assets/Scripts/Data/ClickColorData.json"))
-            {
-                jsonData = dr.ReadToEnd();
-                ClicksData = JsonUtility.FromJson<List<ClickColorData>>(jsonData);
-                Debug.Log(ClicksData.Count);
-            }
-        } 
-        catch (Exception e)
-        {
-            Debug.LogException(e, this);
-        }
-    }
+    public List<ClickColorData> clicksData;
 }

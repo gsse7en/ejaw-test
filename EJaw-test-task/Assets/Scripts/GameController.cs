@@ -6,17 +6,20 @@ using System.IO;
 public class GameController : MonoBehaviour
 {
     public Camera mainCamera;
+    private DataResponse prefabNames;
+    
     private DataResponse objectTypes;
+
+    
 
     void Start()
     {
         string jsonData;
-        using (StreamReader dr = new StreamReader("Assets/Scripts/Data/dataParts.json"))
+        using (StreamReader dataReader = new StreamReader("Assets/Scripts/Data/PrefabNames.json"))
         {
-            jsonData = dr.ReadToEnd();
+            jsonData = dataReader.ReadToEnd();
         }
-        objectTypes = JsonUtility.FromJson<DataResponse>(jsonData);
-        DataStorage.Instance.objectTypes = objectTypes;
+        prefabNames = JsonUtility.FromJson<DataResponse>(jsonData);
     }
 
     void Update()
@@ -31,9 +34,10 @@ public class GameController : MonoBehaviour
             {
                 if (hit.transform.tag == "Floor")
                 {
-                    GameObject pref = Instantiate(objectTypes.getRandPrefab(), hit.point, Quaternion.identity);
-                    pref.GetComponent<Renderer>().material = objectTypes.getRandMaterial();
+                    GameObject pref = Instantiate(getRandPrefab(prefabNames.prefabs), hit.point, Quaternion.identity);
+                    
                     pref.AddComponent<ObjectScript>();
+                    pref.GetComponent<ObjectScript>().ChangeColor();
                 }
                 if (hit.transform.tag == "Element")
                 {
@@ -41,5 +45,10 @@ public class GameController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public GameObject getRandPrefab(List<string> prefabNames)
+    {
+        return Resources.Load("Prefabs/"+prefabNames[Random.Range(0, prefabNames.Count)], typeof(GameObject)) as GameObject;
     }
 }

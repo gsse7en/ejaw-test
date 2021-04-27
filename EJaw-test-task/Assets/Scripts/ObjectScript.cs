@@ -8,27 +8,30 @@ using System.IO;
 public class ObjectScript:MonoBehaviour
 {
     public CompositeDisposable disposables;
-    private DataResponse objectTypes;
     private int clickCounter = 0;
 
     void Start () {
-        objectTypes = DataStorage.Instance.objectTypes;
-        Observable
+        GameData gameData = GameData.GetInstance();
+        Debug.Log(gameData.observableTime);
+        var sub = Observable
             .Timer (System.TimeSpan.FromSeconds (5)) 
             .Repeat()
             .Subscribe (_ => ChangeColor()).AddTo (disposables); 
+    }
+
+// change set color logic
+    public void ChangeColor () 
+    { 
+        Color randomColor = new Color( Random.value, Random.value, Random.value, 1.0f );
+        this.gameObject.GetComponent<Renderer>().material.color = randomColor;
     }
 
     public void Clicked () 
     { 
         if (++clickCounter == 5) {
             clickCounter = 0;
-            this.gameObject.GetComponent<Renderer>().material = objectTypes.getRandMaterial();
+            ChangeColor ();
         }
-    }
-    void ChangeColor() 
-    {
-this.gameObject.GetComponent<Renderer>().material = objectTypes.getRandMaterial();
     }
     void OnEnable () { 
         disposables = new CompositeDisposable();
